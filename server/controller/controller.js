@@ -13,7 +13,7 @@ const loginUser = async (req, res, next) => {
     });
     if (data) {
         let payload = { emailId,phoneNo }
-        let token = jwt.sign(payload, process.env.SECRET_KEY)
+        let token = jwt.sign(payload, process.env.SECRET_KEY,{expiresIn:"10h"})
         res.status(200).json({
             error: false,
             message: "Login successful",
